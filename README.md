@@ -37,33 +37,33 @@ Instrucciones
 3. Escribir el código en varios commits. Nos interesa saber como va resolviendo los problema durante el desafío.
 4. Cuando termines el desafio, genera un pull request con las explicaciones para iniciar el proyecto, como acceder al menu de vacantes y al endpoint publico de vacantes.
 
-Como acceder al api de hiringroom.com
+Como acceder al api de https://api.hiringroom.com/
 --------------------------------------
 
 Para este desafío vamos a usar el endpoint de vacantes por estado, para acceder a este endpoint necesitamos un token de autenticación el cual se puede obtener de la siguiente manera.
 
 ```bash
-curl -H "Content-Type: application/json" -X POST -d '{"client_id": "xxxxxxx", "client_secret": "xxxxxxxxx"}' https://api.hiringroom.com/v0/authenticate/login
+curl -H "Content-Type: application/json" -X POST -d '{"client_id": "misentrevistas", "client_secret": "misentrevistas"}' https://api.hiringroom.com/v0/authenticate/login
 ```
 
 Como obtener la lista de vacantes
 ---------------------------------
 
 ```bash
-curl -L -H "Content-Type: application/json" -X GET https://api.hiringroom.com/v0/vacancy/get_by_status?start=23-11-2017&end=30-11-2017&status=activa&token={your-access-token}
+curl -X GET --header 'Accept: application/json' 'https://api.hiringroom.com/v0/vacancies?listStatus=activa&userId=5767f2ce820cbfb46f59de04&page=0&pageSize=20&token={your-access-token}
 ```
 
 Descripción del endpoint de vacante
 -----------------------------------
 
-`GET` https://api.hiringroom.com/v0/vacancy/get_by_status
-> Permite obtener las vacantes según el estado que tengan actualmente, en el rango de fecha especificada.
+`GET` https://api.hiringroom.com/v0/vacancies
+> Obtiene una lista de vacantes segun los criterios de busqueda
 
 ### Parámetros
 
-- `start`: fecha inicio del rango para el filtro, formato DD-MM-YYYY
+- `listStatus`: Listado de estatus de la vacante separados por coma. Si no se especifica ninguno, devuelve todas las vacantes. Status disponibles: [activa/cerrada/cubierta/confidencial/espontanea]
 
-- `end`:  fecha fin del rango para el filtro, formato DD-MM-YYYY
+- `userId`:  Identificador del usuario
 
 - `status`: estado de la vacante en ese momento (activa/cerrada/cancelada)
 
