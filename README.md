@@ -43,7 +43,7 @@ Como acceder al api de https://api.hiringroom.com/
 Para este desafío vamos a usar el endpoint de vacantes por estado, para acceder a este endpoint necesitamos un token de autenticación el cual se puede obtener de la siguiente manera.
 
 ```bash
-curl -H "Content-Type: application/json" -X POST -d '{"client_id": "misentrevistas", "client_secret": "misentrevistas"}' https://api.hiringroom.com/v0/authenticate/login
+curl -H "Content-Type: application/json" -X POST -d '{"client_id": "misentrevistas", "client_secret": "59f3af9bc0539b37f4346217a4c3324a"}' https://api.hiringroom.com/v0/authenticate/login
 ```
 
 Como obtener la lista de vacantes
@@ -86,5 +86,7 @@ El stack actual de hiringroom es el siguiente
 - Jquery
 - Bootstrap
 - Angular
+- Node.js
+- React
 
 Pero se puede usar la tecnología que creas conveniente.
