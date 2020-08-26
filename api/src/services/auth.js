@@ -14,7 +14,6 @@ function obtenerToken(){
 
 function actualizarToken(){
 
-	setTimeout(() => {
 
 		const data = {
 			client_id : "misentrevistas",
@@ -25,28 +24,28 @@ function actualizarToken(){
 
 			headers: {
 
-				'Content-Type': 'application/json',
+				'Content-Type': 'application/json'
+			
 			}
 		};
 
 		axios.post('https://api.hiringroom.com/v0/authenticate/login', data, options)
 		.then(res =>{
 			token = res.data.token
-		})
-
-	}, 2000);
-
+		});
 };
 
 
-function setearToken(tokenSeteado){
 
+function setearToken(tokenSeteado){
+	
 	token = tokenSeteado;
 
 }
 
 module.exports = {
 
-	obtenerToken
+	obtenerToken,
+	actualizarToken
 
 }
