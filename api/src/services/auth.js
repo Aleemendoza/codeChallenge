@@ -33,6 +33,8 @@ function actualizarToken(){
 		.then(res =>{
 			token = res.data.token
 		});
+
+
 };
 
 
