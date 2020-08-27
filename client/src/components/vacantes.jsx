@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import SingleItem from './singleitem.jsx'
 
 const List = (props) => (
-    <ol>
+    <div>
         {
 
             props.items.map((item, i) => {
@@ -13,7 +13,7 @@ const List = (props) => (
 				)
             })
         }
-    </ol>
+    </div>
 )
 class Vacantes extends React.Component {
 

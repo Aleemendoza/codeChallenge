@@ -24,35 +24,20 @@ import Collapse from '@material-ui/core/Collapse';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    margin: '30px 30px',
     boxShadow: '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)',
-    pading: '70px',
+    padding: '20px 40px',
+    maxWidth: '820px',
+    margin: '30px auto'
   },
   bullet: {
     display: 'inline-block',
     margin: '0 2px',
     transform: 'scale(0.8)',
   },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
    avatar: {
     backgroundColor: '#000000',
-    width: 50,
 
   },
-  expandOpen: {
-    transform: 'rotate(180deg)',
-  },
-  botonPostular: {
-
-    width: 80 ,
-
-  },
- 
 }));
 
 
