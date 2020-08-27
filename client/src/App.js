@@ -1,6 +1,10 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import './app.css'
+import './app.css';
+import Vacantes from './components/vacantes.jsx';
+import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input';
+
 
 function App() {
   return (
@@ -9,10 +13,16 @@ function App() {
         <img src="https://api.hiringroom.com/images/logo_small.png" className="App-logo" alt="logo" />
           <span className="navbar-brand"> HiringRoom </span>
           <div className="w-100">
-            <input placeholder= "buscar" type="text"></input>
-          
+            <Input placeholder="buscar" type="text" color='secondary'></Input>
+
+            <Button variant="contained">
+               Buscar vacante!
+            </Button>
+
           </div>
+            
         </nav>
+        <Vacantes />
       </div>
   );
 }
