@@ -1,16 +1,32 @@
-import React,  { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React from 'react';
+import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
+import clsx from 'clsx';
+
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardMedia from '@material-ui/core/CardMedia';
+
+import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 
-const useStyles = makeStyles({
+import AddLocationIcon from '@material-ui/icons/AddLocation';
+import WorkIcon from '@material-ui/icons/Work';
+import IconButton from '@material-ui/core/IconButton';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+import Collapse from '@material-ui/core/Collapse';
+
+
+const useStyles = makeStyles((theme) => ({
   root: {
-    minWidth: 175,
-    maxWidth: 500,
+    margin: '30px 30px',
+    boxShadow: '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)',
+    pading: '70px',
   },
   bullet: {
     display: 'inline-block',
@@ -23,22 +39,37 @@ const useStyles = makeStyles({
   pos: {
     marginBottom: 12,
   },
-});
+   avatar: {
+    backgroundColor: '#000000',
+  },
+  expandOpen: {
+    transform: 'rotate(180deg)',
+  },
+  botonPostular: {
 
+    width: 80 ,
+
+  },
+ 
+}));
 
 
 
 
 export default function CardVacancy(props) {
-
-
+  
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
-
+  const [expanded, setExpanded] = React.useState(false);
+  
   let area = null;
-  let fechaCierre = null;
+  let fechaCierre = Date();
   let ubicacion = null;  
   let requisitos = null;
+  let beneficios = null;
+
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
 
   if(props.items.area) {
     area = props.items.area.nombre
@@ -55,38 +86,75 @@ export default function CardVacancy(props) {
   if(props.items.requisitos){
     requisitos = props.items.requisitoTrabajo
   }
+  if(props.items.beneficios){
+    beneficios = props.items.beneficios
+  }
 
   return (
-    <Card className={classes.root} variant="outlined" key="item">
+    <Card className={classes.root} key="item">
+      <CardHeader
+        avatar={
+          <Avatar aria-label="recipe" className={classes.avatar}>
+           <img src="https://api.hiringroom.com/images/logo_small.png" className="App-logo" alt="logo" />
+          </Avatar>
+        }
+        action={
+          <IconButton aria-label="settings">
+            <AddLocationIcon color='action'></AddLocationIcon> <br/> {ubicacion}  
+          </IconButton>
+        }
+
+      title= {
+
+        <Typography variant="h4" > {props.items.nombre} </Typography>
+
+      }
+        
+      subheader= { props.items.fechaCreacion }
+      
+      subheader={ props.items.fechaCierre }
+      
+      />
+
       <CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
-          Area De trabajo : {props.items.areaTrabajo}
+        <Typography color="textSecondary" gutterBottom variant="h6">
+          <WorkIcon color='action'></WorkIcon> {props.items.areaTrabajo}
         </Typography>
-        <Typography variant="h5" component="h2">
-          Nombre de la vacante:
-           {props.items.nombre}
-         </Typography>
-        <Typography className={classes.pos} color="textSecondary">
+        <Typography className={classes.pos} color="textSecondary" variant="h5">
           {area}
-        </Typography>
-        <Typography variant="body2" component="p">
-          {fechaCierre}
-          <br />
-          {ubicacion}
-        </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          salario ofrecido: {props.items.salarioOfrecido}
-        </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          requisitos: {props.items.requisitos}
-        </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          beneficios: {props.items.beneficios}
-        </Typography>
+          </Typography>
+      
+      <IconButton
+          className={clsx(classes.expand, {
+            [classes.expandOpen]: expanded,
+          })}
+          onClick={handleExpandClick}
+          aria-expanded={expanded}
+          aria-label="show more"
+        >
+        <ExpandMoreIcon />
+        </IconButton>
       </CardContent>
-      <CardActions>
-        <Button size="small" href="https://localhost:3000/vacantes" > Ver vacantes </Button>
+
+      <Collapse in={expanded} timeout="auto" unmountOnExit>
+        <CardContent>
+          <Typography paragraph>Somos: </Typography>
+        <Typography>
+            salario ofrecido: {props.items.salarioOfrecido}
+        </Typography><br />
+          <Typography paragraph>
+            requisitos: {requisitos}
+          </Typography>
+          <Typography paragraph>
+            beneficios: {beneficios}
+          </Typography>
+          <Typography>
+          </Typography>
+        </CardContent>
+        <CardActions>
+        <Button className="botonPostular" variant="contained" href="https://localhost:3000/vacantes"> Postulate! </Button>
       </CardActions>
+      </Collapse>
     </Card>
   );
 }

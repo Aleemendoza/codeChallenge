@@ -15,13 +15,14 @@ function App() {
           <div className="w-100">
             <Input placeholder="buscar" type="text" color='secondary'></Input>
 
-            <Button href="http://localhost:3000/vacantes" variant="contained">
+            <Button href="http://localhost:3000" variant="contained">
                Buscar vacante!
             </Button>
 
           </div>
             
         </nav>
+        <Vacantes />
       </div>
   );
 }
