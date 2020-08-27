@@ -41,6 +41,8 @@ const useStyles = makeStyles((theme) => ({
   },
    avatar: {
     backgroundColor: '#000000',
+    width: 50,
+
   },
   expandOpen: {
     transform: 'rotate(180deg)',
@@ -62,7 +64,7 @@ export default function CardVacancy(props) {
   const [expanded, setExpanded] = React.useState(false);
   
   let area = null;
-  let fechaCierre = Date();
+  let fechaCierre = null;
   let ubicacion = null;  
   let requisitos = null;
   let beneficios = null;
@@ -99,9 +101,9 @@ export default function CardVacancy(props) {
           </Avatar>
         }
         action={
-          <IconButton aria-label="settings">
-            <AddLocationIcon color='action'></AddLocationIcon> <br/> {ubicacion}  
-          </IconButton>
+          <Typography variant='body2'>
+            <AddLocationIcon color='action'></AddLocationIcon> {ubicacion}  
+          </Typography>
         }
 
       title= {
@@ -110,19 +112,24 @@ export default function CardVacancy(props) {
 
       }
         
-      subheader= { props.items.fechaCreacion }
+      subheader= {
+
+        <Typography variant='body2' > 
+        Fecha de creacion: { props.items.fechaCreacion } <br/> 
+        Fecha de cierre: { props.items.fechaCierre }
+        </Typography>
+      }
       
-      subheader={ props.items.fechaCierre }
       
       />
 
       <CardContent>
-        <Typography color="textSecondary" gutterBottom variant="h6">
-          <WorkIcon color='action'></WorkIcon> {props.items.areaTrabajo}
+        <Typography color="text" gutterBottom variant="h6">
+          <WorkIcon></WorkIcon> {props.items.areaTrabajo}
         </Typography>
-        <Typography className={classes.pos} color="textSecondary" variant="h5">
-          {area}
-          </Typography>
+        <Typography className={classes.pos} color="text" variant="h5">
+          - {area}
+        </Typography>
       
       <IconButton
           className={clsx(classes.expand, {
@@ -152,7 +159,7 @@ export default function CardVacancy(props) {
           </Typography>
         </CardContent>
         <CardActions>
-        <Button className="botonPostular" variant="contained" href="https://localhost:3000/vacantes"> Postulate! </Button>
+        <Button variant="contained" color='secondary' href="https://localhost:3000/vacantes" fullWidth={true}> Postulate! </Button>
       </CardActions>
       </Collapse>
     </Card>
