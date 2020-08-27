@@ -7,9 +7,9 @@ const List = (props) => (
         {
 
             props.items.map((item, i) => {
-            	console.log(item)
+                console.log(item)
                 return (
-                	<SingleItem />
+                	<SingleItem items={item} />
 				)
             })
         }
