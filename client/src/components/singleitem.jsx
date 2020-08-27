@@ -25,7 +25,7 @@ import Collapse from '@material-ui/core/Collapse';
 const useStyles = makeStyles((theme) => ({
   root: {
     boxShadow: '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)',
-    padding: '20px 40px',
+    padding: '40px',
     maxWidth: '820px',
     margin: '30px auto'
   },
@@ -37,6 +37,9 @@ const useStyles = makeStyles((theme) => ({
    avatar: {
     backgroundColor: '#000000',
 
+  },
+  expandOpen: {
+    transform: 'rotate(180deg)',
   },
 }));
 
