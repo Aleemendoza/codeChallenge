@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 
 const UserSchema = new Schema({
-	cliente_id:{
+	email:{
 		type: String
 	},
-	cliente_secret:{
+	password:{
 	
 		type: String
 	}

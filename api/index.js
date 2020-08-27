@@ -30,7 +30,7 @@ require('./src/services/db.js');
 
 // Settings
 
-server.set('port', process.env.PORT || 3000);
+server.set('port', process.env.PORT || 3001);
 
 server.use(cors());
 
