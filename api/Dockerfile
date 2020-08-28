@@ -1,7 +1,5 @@
 FROM node:lts-slim
 
-MAINTEINER Alejandro Mendoza <alejandromendoza.dev@gmail.com> 
-
 RUN mkdir -p /usr/src/app
 
 WORKDIR /usr/src/app

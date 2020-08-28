@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
 const server = require('../../index.js');
 
-mongoose.connect('mongodb://localhost:27017/hiringroomdatabase', {
+//TODO: dockerizar mongo
+
+mongoose.connect('mongodb://hiringroom:admin@mongo:27017/hiringroomdatabase?authSource=hiringroomdatabase', {
 
 	useCreateIndex: true,
 	useNewUrlParser: true,
-	useFindAndModify: true,
-	useUnifiedTopology: true
+	
 
 })
 .then(db => console.log('conectado a la base de datos'))

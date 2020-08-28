@@ -13,6 +13,8 @@ services:
       - ./client:/usr/src/app
   
   backend:
+    depends_on: 
+      - mongo
     container_name: Back_end
     build:
       context: ./api
@@ -21,3 +23,14 @@ services:
       - "3001:3001"
     volumes:
       - ./api:/usr/src/app
+
+
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: hiringroom
+      MONGO_INITDB_ROOT_PASSWORD: admin
+
+    ports:
+      - "27017:27017"
