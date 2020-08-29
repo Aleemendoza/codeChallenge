@@ -1,30 +1,29 @@
 import React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+
 import 'bootstrap/dist/css/bootstrap.css';
 import './app.css';
-import Vacantes from './components/vacantes.jsx';
-import Button from '@material-ui/core/Button';
-import Input from '@material-ui/core/Input';
 
+
+import Vacantes from './components/vacantes.jsx';
+import InicioSesion from './components/home.js';
+import Registro from './components/registro.jsx'
 
 function App() {
   return (
-    <div className="contenPrin">
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <img src="https://api.hiringroom.com/images/logo_small.png" className="App-logo" alt="logo" />
-          <span className="navbar-brand"> HiringRoom </span>
-          <div className="w-100">
-            <Input placeholder="buscar" type="text" color='secondary'></Input>
+      <div className="App">
+      
+        <BrowserRouter >
 
-            <Button href="http://localhost:3000" variant="contained">
-               Buscar vacante!
-            </Button>
+          <Route exact path='/vacantes' component={ Vacantes } />
+          <Route exact path='/registro' component={Registro} />
+          <Route exact path='/' component={InicioSesion} />
 
-          </div>
-            
-        </nav>
-        <Vacantes />
-      </div>
+        </BrowserRouter>
+    </div>
   );
 }
 
 export default App;
+
+   

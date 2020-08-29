@@ -7,7 +7,6 @@ const List = (props) => (
         {
 
             props.items.map((item, i) => {
-                console.log(item)
                 return (
                 	<SingleItem items={item} />
 				)
