@@ -14,6 +14,7 @@ mongoose.connect('mongodb://localhost:27017/hiringroomdatabase', {
 	
 
 })
+
 .then(db => console.log('conectado a la base de datos'))
 .catch(err => console.log(err));
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {loginUsuario} from '../../actions/actionProduct'
+import {loginUsuario} from '../actions/login.js'
 import {connect} from 'react-redux'
 
 export function validate(input) {
@@ -72,6 +72,8 @@ export function validate(input) {
 
 function mapStateToProps(state) {
   return {
+  	...state,
+  	FormUsuario
   };
 }
 
